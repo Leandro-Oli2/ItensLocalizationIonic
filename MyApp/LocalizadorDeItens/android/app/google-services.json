@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "534238134958",
+    "project_id": "localizadordeitens",
+    "storage_bucket": "localizadordeitens.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534238134958:android:d379894629bccbabec233f",
+        "android_client_info": {
+          "package_name": "com.leandro.localizadordeitens"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb9iQIePJZ7qxnqQpspiDS87zRKvDTYx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534238134958:android:a4c7e60b43226dc0ec233f",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb9iQIePJZ7qxnqQpspiDS87zRKvDTYx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

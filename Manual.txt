@@ -1,0 +1,40 @@
+O aplicativo que você desenvolvido é um Localizador Comunitário de Itens Perdidos e Encontrados.
+
+📌 Resumo do Aplicativo
+Este é um aplicativo móvel (híbrido, usando Ionic/React) projetado para conectar pessoas que perderam algo com aquelas que encontraram o item, utilizando localização geográfica para facilitar o match.
+
+1. Funcionalidades Principais
+Registro de Ocorrências: Usuários podem postar um item como Perdido ou Encontrado.
+
+Localização Baseada em Proximidade: O aplicativo registra a coordenada GPS exata no momento da postagem e exibe uma lista de itens próximos ao local atual do usuário, calculando a distância em quilômetros.
+
+Alerta de Match: Quando um usuário posta um item "Encontrado" em uma área próxima a um item "Perdido" registrado, o sistema alerta o dono original.
+
+
+
+######################################################
+# ROTEIRO DE COMANDOS: SETUP RÁPIDO IONIC/REACT
+######################################################
+
+# 1. PERSONALIZAÇÃO OBRIGATÓRIA (CRÍTICO!)
+# Abrir o arquivo 'src/firebase.ts' e SUBSTITUIR AS STRINGS 
+# FIXAS (hardcode) da 'apiKey', 'authDomain', etc., 
+# pelos VALORES DO SEU FIREBASE.
+
+# 2. INSTALAÇÃO DE DEPENDÊNCIAS
+npm install
+
+# 3. BUILD E COMPILAÇÃO WEB
+# (Compila o código JS/TS com as CHAVES CORRETAS)
+npm run build
+
+# 4. SINCRONIZAÇÃO CAPACITOR
+# (Copia o código web compilado para a pasta Android)
+npx cap sync android
+
+# 5. ABRIR E RODAR NO ANDROID STUDIO
+# (Abre o projeto Android Studio)
+npx cap open android
+
+# AÇÃO FINAL NO ANDROID STUDIO: 
+# Aguardar o Gradle sincronizar e clicar no botão 'Run' (Play) para rodar no emulador.
