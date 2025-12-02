@@ -31,8 +31,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleLogin(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleLogin() {
 
     try {
       setError('');
@@ -40,7 +39,7 @@ const Login: React.FC = () => {
       
       await login(email, password);
 
-      history.push('/home'); 
+      history.push('/home');
 
     } catch (err) {
       setError('Falha ao fazer login. Verifique seu e-mail e senha.'); 
@@ -55,56 +54,52 @@ const Login: React.FC = () => {
           <IonTitle>Acesso</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen className="ion-padding">
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>Fazer Login</IonCardTitle>
           </IonCardHeader>
 
-          <form onSubmit={handleLogin}>
-            <IonList>
-              {error && <IonItem><IonText color="danger">{error}</IonText></IonItem>}
+          <IonList>
+            {error && <IonItem><IonText color="danger">{error}</IonText></IonItem>}
 
-              <IonItem>
-                <IonLabel position="floating">E-mail</IonLabel>
-                <IonInput 
-                  type="email" 
-                  value={email} 
-                  onIonChange={(e) => setEmail(e.detail.value!)} 
-                  required 
-                />
-              </IonItem>
+            <IonItem>
+              <IonLabel position="floating">E-mail</IonLabel>
+              <IonInput 
+                type="email"
+                value={email}
+                onIonInput={(e: any) => setEmail(e.target.value)}
+                required
+              />
+            </IonItem>
 
-              <IonItem>
-                <IonLabel position="floating">Senha</IonLabel>
-                <IonInput 
-                  type="password" 
-                  value={password} 
-                  onIonChange={(e) => setPassword(e.detail.value!)} 
-                  required 
-                />
-              </IonItem>
-            </IonList>
+            <IonItem>
+              <IonLabel position="floating">Senha</IonLabel>
+              <IonInput 
+                type="password"
+                value={password}
+                onIonInput={(e: any) => setPassword(e.target.value)}
+                required
+              />
+            </IonItem>
+          </IonList>
 
-            <IonButton expand="block" type="submit" className="ion-margin-top" disabled={loading}>
-              Entrar
-            </IonButton>
-            
-            <IonButton 
-              expand="block" 
-              fill="clear" 
-              routerLink="/signup" 
-              className="ion-margin-bottom"
-            >
-              Criar Conta
-            </IonButton>
-          </form>
+          <IonButton expand="block" className="ion-margin-top" disabled={loading} onClick={handleLogin}>
+            Entrar
+          </IonButton>
+
+          <IonButton 
+            expand="block" 
+            fill="clear" 
+            routerLink="/signup" 
+            className="ion-margin-bottom"
+          >
+            Criar Conta
+          </IonButton>
         </IonCard>
         
-        <IonLoading 
-          isOpen={loading} 
-          message={'Entrando...'}
-        />
+        <IonLoading isOpen={loading} message={'Entrando...'} />
 
       </IonContent>
     </IonPage>

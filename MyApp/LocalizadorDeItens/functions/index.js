@@ -63,12 +63,11 @@ exports.sendMatchNotification = onDocumentCreated("items/{itemId}", async (event
         }
     });
 
-    if (matches.length === 0) return;
+        if (matches.length === 0) return;
 
     for (const match of matches) {
         const userDoc = await db.collection("users").doc(match.ownerUid).get();
         const userData = userDoc.data();
-
         const token = userData?.pushToken;
 
         if (token) {
@@ -81,4 +80,5 @@ exports.sendMatchNotification = onDocumentCreated("items/{itemId}", async (event
             });
         }
     }
+
 });
