@@ -1,6 +1,7 @@
 // src/pages/Home.tsx
 
 import React from 'react';
+import { useHistory } from 'react-router';
 import { 
   IonContent, 
   IonHeader, 
@@ -19,7 +20,8 @@ import {
   IonCardSubtitle,
   IonSpinner,
   IonNote,
-  IonRouterLink
+  IonRouterLink,
+  useIonRouter
 } from '@ionic/react';
 import { logOutOutline, addCircleOutline, mapOutline, walkOutline } from 'ionicons/icons';
 import { useAuth } from '../context/AuthContext';
@@ -27,6 +29,8 @@ import { useItems } from '../hooks/useItems';
 import { usePushNotifications } from '../hooks/usePushNotifications';
 
 const Home: React.FC = () => {
+  const router = useIonRouter();  
+  const history = useHistory();
   const { currentUser, logout } = useAuth();
   const { items, loading, userLocation } = useItems();
   usePushNotifications();
@@ -34,6 +38,7 @@ const Home: React.FC = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      window.location.reload();
     } catch {
       alert('Falha ao sair. Tente novamente.');
     }
@@ -66,7 +71,7 @@ const Home: React.FC = () => {
         <IonRouterLink routerLink="/new-item">
           <IonButton expand="block" color="success" className="ion-margin">
             <IonIcon slot="start" icon={addCircleOutline} />
-            Registrar Novo Item (Perdido ou Encontrado)
+            Registrar Novo Item
           </IonButton>
         </IonRouterLink>
 
@@ -87,7 +92,12 @@ const Home: React.FC = () => {
 
         <IonList>
           {items.map(item => (
-            <IonItem key={item.id} detail={true} button>
+            <IonItem 
+              key={item.id} 
+              detail={true} 
+              button 
+              routerLink={`/item-details/${item.id}`}
+            >
               <IonIcon 
                 slot="start" 
                 icon={item.tipo === 'Perdido' ? mapOutline : walkOutline} 

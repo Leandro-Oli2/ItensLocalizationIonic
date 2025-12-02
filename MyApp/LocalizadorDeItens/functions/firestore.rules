@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // PERMISSÃO DE DADOS DO USUÁRIO
+    match /users/{userId} {
+      // Regra: Permite a leitura e atualização SOMENTE se o ID do usuário (auth.uid)
+      // for igual ao ID do documento (userId).
+      allow read, update: if request.auth != null && request.auth.uid == userId;
+      
+      // Regra: Permite a criação de um novo perfil SOMENTE se o ID corresponder.
+      allow create: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // PERMISSÃO DE DADOS DOS ITENS
+    match /items/{itemId} {
+      // Regra: Permite a leitura para QUALQUER usuário logado.
+      allow read: if request.auth != null;
+      
+      // Regra: Permite a criação de um novo item para QUALQUER usuário logado.
+      allow create: if request.auth != null;
+      
+      // Regra: Permite a exclusão SOMENTE se o usuário for o dono do item.
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "items",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tipo", "order": "ASCENDING" },
+        { "fieldPath": "dataPostagem", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "items",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "resolvido", "order": "ASCENDING" },
+        { "fieldPath": "dataPostagem", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

@@ -6,13 +6,13 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  User,
-  Auth
+  User
 } from 'firebase/auth';
-import { auth } from '../firebase'; 
+import { auth } from '../firebase';
+import { IonLoading } from '@ionic/react';
 
 interface AuthContextType {
-  currentUser: User | null | undefined;
+  currentUser: User | null;
   signup: (email: string, password: string) => Promise<any>;
   login: (email: string, password: string) => Promise<any>;
   logout: () => Promise<void>;
@@ -22,39 +22,37 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  return context as AuthContextType;
+  return context;
 };
 
 interface AuthProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(undefined); 
-  
-  const signup = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth as Auth, email, password);
-  };
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const login = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth as Auth, email, password);
-  };
+  const signup = (email: string, password: string) =>
+    createUserWithEmailAndPassword(auth, email, password);
 
-  const logout = () => {
-    return signOut(auth as Auth);
-  };
+  const login = (email: string, password: string) =>
+    signInWithEmailAndPassword(auth, email, password);
+
+  const logout = () => signOut(auth);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth as Auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
     return unsubscribe;
   }, []);
 
-  const value = {
+  const value: AuthContextType = {
     currentUser,
     signup,
     login,
@@ -63,7 +61,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {currentUser !== undefined && children}
+      {/* Sempre renderiza o children */}
+      {children}
+
+      {/* Loading apenas sobreposto */}
+      <IonLoading isOpen={loading} message="Carregando..." />
     </AuthContext.Provider>
   );
 };

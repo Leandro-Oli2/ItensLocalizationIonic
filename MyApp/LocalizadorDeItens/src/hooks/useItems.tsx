@@ -41,7 +41,7 @@ export const useItems = () => {
         const position = await Geolocation.getCurrentPosition();
         setUserLocation(position.coords);
       } catch (e) {
-        setUserLocation(null);
+        setUserLocation({ latitude: 0, longitude: 0 } as Position['coords']);
       }
     };
     getLocation();
