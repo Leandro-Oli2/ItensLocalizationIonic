@@ -49,8 +49,12 @@ Firebase Cloud Messaging (FCM) – envio de notificações
 Android Studio – build, debug e publicação Android
 
 🗂️ Estrutura do Projeto
+
 MyApp/
+
+  
   LocalizadorDeItens/
+  
     src/
       pages/
       components/
@@ -80,15 +84,17 @@ Um projeto criado no Firebase
 Emulador Android ou celular físico
 
 ⚙️ Instalação e Setup
+
 1) Instalar dependências
 
 Na raiz do projeto:
 
 cd LocalizadorDeItens
+
 npm install
 
 2) Gerar build web (React)
-npm run build
+3) npm run build
 
 🔥 Configuração do Firebase
 Você precisa ajustar duas partes:
@@ -114,8 +120,11 @@ O deployment exige plano Blaze.
 
 Dentro da pasta functions/:
 
+
 cd functions
+
 npm install
+
 firebase deploy --only functions
 
 📱 Rodando no Android
