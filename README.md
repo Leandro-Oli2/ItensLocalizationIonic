@@ -1,5 +1,7 @@
 🔎 Localizador Comunitário de Itens Perdidos e Encontrados
 
+OBS: APENAS ANDROID
+
 Um aplicativo móvel híbrido para ajudar pessoas a reencontrarem itens perdidos através de geolocalização, notificações push e armazenamento em nuvem.
 Quando um usuário registra um item perdido ou encontrado, o app verifica automaticamente a proximidade com outros registros e envia alertas em tempo real.
 
