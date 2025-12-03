@@ -2,7 +2,7 @@
 
 OBS: APENAS ANDROID
 
-Um aplicativo móvel híbrido para ajudar pessoas a reencontrarem itens perdidos através de geolocalização, notificações push e armazenamento em nuvem.
+Um aplicativo móvel para ajudar pessoas a reencontrarem itens perdidos através de geolocalização, notificações push e armazenamento em nuvem.
 Quando um usuário registra um item perdido ou encontrado, o app verifica automaticamente a proximidade com outros registros e envia alertas em tempo real.
 
 📱 Visão Geral
@@ -31,7 +31,7 @@ Notificações push via FCM
 
 Back-end em nuvem usando Cloud Functions
 
-Aplicativo mobile híbrido com build Android
+Aplicativo mobile com build Android
 
 🏗️ Arquitetura e Tecnologias Utilizadas
 Ionic Framework – UI e estrutura mobile híbrida
@@ -106,7 +106,7 @@ Você precisa ajustar duas partes:
 Edite o arquivo e coloque as chaves do seu projeto (apiKey, authDomain, etc.).
 
 2) Firebase Functions (functions/index.js)
-
+   
 Código do servidor responsável por:
 
 ler novos itens cadastrados
@@ -144,13 +144,9 @@ Registro de item similar para verificar envio de push
 
 Testar login e logout
 
-Testar navegação e exibição de itens no mapa
-
 📌 Melhorias Futuras (Roadmap)
 Sistema de chat entre quem achou e perdeu
 
 Filtros avançados por categoria do item
-
-Modo offline com sincronização posterior
 
 Histórico completo dos itens cadastrados
