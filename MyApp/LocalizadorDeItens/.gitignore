@@ -18,7 +18,7 @@ src/firebase.ts
 
 firebase.json
 
-firebase-debug.log
+/functions/firebase-debug.log
 
 /functions/node_modules
 
