@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">LocalizadorDeItens</string>
-    <string name="title_activity_main">LocalizadorDeItens</string>
-    <string name="package_name">com.leandro.localizadordeitens</string>
-    <string name="custom_url_scheme">com.leandro.localizadordeitens</string>
-</resources>
