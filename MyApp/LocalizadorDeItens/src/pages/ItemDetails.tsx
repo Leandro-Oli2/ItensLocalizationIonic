@@ -1,5 +1,3 @@
-// src/pages/ItemDetails.tsx
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { 
@@ -36,7 +34,6 @@ interface Item {
 }
 
 const ItemDetails: React.FC = () => {
-  // Hook para ler parâmetros da URL. 'id' deve ser o nome na rota (ex: /details/:id)
   const { id } = useParams<{ id: string }>(); 
   const [item, setItem] = useState<Item | null>(null);
   const [loading, setLoading] = useState(true);

@@ -1,5 +1,3 @@
-// src/pages/Home.tsx
-
 import React from 'react';
 import { useHistory } from 'react-router';
 import { 

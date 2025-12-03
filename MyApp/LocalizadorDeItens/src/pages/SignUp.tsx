@@ -1,5 +1,3 @@
-// src/pages/Signup.tsx (FINALMENTE CORRIGIDO)
-
 import React, { useState } from 'react';
 import { useHistory } from 'react-router'; 
 import { 
@@ -37,9 +35,7 @@ const [loading, setLoading] = useState(false);
 
 async function handleSignup(e: React.FormEvent) {
  e.preventDefault();
- setError(''); // Limpa erros antigos
-
-    // 1. VALIDAÇÃO LOCAL (Usando .trim() para garantir a comparação sem espaços)
+ setError('');
  if (password.trim() !== confirmPassword.trim()) {
  return setError('As senhas não coincidem!');
  }
@@ -54,7 +50,6 @@ async function handleSignup(e: React.FormEvent) {
  const userCredential = await signup(email.trim(), password.trim());
  const userId = userCredential.user.uid; 
 
- // 2. CRIAÇÃO DO PERFIL NO FIRESTORE
  await setDoc(doc(db, 'users', userId), {
   uid: userId,
   email: email.trim(),
@@ -64,7 +59,6 @@ async function handleSignup(e: React.FormEvent) {
  history.push('/home'); 
 
  } catch (err: any) {
- // 3. CAPTURA DE ERRO DETALHADO DO FIREBASE
  let errorMessage = 'Falha ao criar conta. Verifique o email/senha.';
 
       if (err.code) {

@@ -1,5 +1,3 @@
-// src/components/PrivateRoute.tsx
-
 import React from 'react';
 import { Route, Redirect, RouteProps } from 'react-router';
 import { useAuth } from '../context/AuthContext';

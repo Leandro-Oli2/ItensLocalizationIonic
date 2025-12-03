@@ -1,5 +1,3 @@
-// src/hooks/usePushNotifications.tsx
-
 import { useEffect } from 'react';
 import { PushNotifications } from '@capacitor/push-notifications';
 import { db } from '../firebase';

@@ -1,5 +1,3 @@
-// src/pages/NewItem.tsx
-
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { 

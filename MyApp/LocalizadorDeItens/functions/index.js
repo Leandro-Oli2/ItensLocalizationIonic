@@ -1,5 +1,3 @@
-// functions/index.js
-
 const admin = require("firebase-admin");
 admin.initializeApp();
 
@@ -9,7 +7,6 @@ const { logger } = require("firebase-functions");
 const fcm = admin.messaging();
 const db = admin.firestore();
 
-// --- LÓGICA DE CÁLCULO DE DISTÂNCIA ---
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const R = 6371;
     const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -24,8 +21,6 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
     return R * c;
 };
 
-// --- CLOUD FUNCTION ---
-// v2 → onDocumentCreated("items/{itemId}", handler)
 exports.sendMatchNotification = onDocumentCreated("items/{itemId}", async (event) => {
     const snap = event.data;
     const newItem = snap.data();

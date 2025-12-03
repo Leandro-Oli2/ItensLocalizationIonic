@@ -1,5 +1,3 @@
-// src/context/AuthContext.tsx
-
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import {
   createUserWithEmailAndPassword,
@@ -61,10 +59,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {/* Sempre renderiza o children */}
       {children}
 
-      {/* Loading apenas sobreposto */}
       <IonLoading isOpen={loading} message="Carregando..." />
     </AuthContext.Provider>
   );
